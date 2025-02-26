@@ -40,6 +40,7 @@ export class AdminNewUserComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
   submit(): void {
     if (!this.form.valid) return;
     this.userService.upsertUser(this.form.getRawValue())

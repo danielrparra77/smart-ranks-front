@@ -30,7 +30,7 @@ export class AdminUserComponent {
       this.users.data = users;
       this.users.data = this.users.data;
       this.changeDetectorRefs.detectChanges();
-    })
+    });
   }
 
   createUser(): void {

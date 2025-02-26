@@ -1,11 +1,58 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { CommonFrontModule } from '../../common/common.module';
+import { ProductService } from '../../service/product/product.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { IProduct } from '../../interfaces/product.entity';
+import { AdminNewProductComponent } from './admin-new-product/admin-new-product.component';
 
 @Component({
   selector: 'app-admin-product',
-  imports: [],
+  imports: [CommonFrontModule],
   templateUrl: './admin-product.component.html',
   styleUrl: './admin-product.component.css'
 })
 export class AdminProductComponent {
+  constructor(
+    private readonly productService: ProductService,
+    private changeDetectorRefs: ChangeDetectorRef,
+  ) {
+    this.getProducts();
+  }
+
+  readonly dialog = inject(MatDialog);
+  products: MatTableDataSource<IProduct> = new MatTableDataSource<IProduct>([]);
+  displayedColumns: string[] = ['name', 'description', 'price', 'stock', 'status' ,'edit'];
+
+  getProducts() {
+    this.productService.getProducts()
+      .subscribe((users: IProduct[]) => {
+        this.products.data = users;
+        this.products.data = this.products.data;
+        this.changeDetectorRefs.detectChanges();
+    });
+  }
+
+  createProduct(): void {
+    const dialogRef = this.dialog.open(AdminNewProductComponent, {
+      data: {new: true},
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        this.getProducts();
+      }
+    });
+  }
+
+  editProduct(product: IProduct): void {
+    const dialogRef = this.dialog.open(AdminNewProductComponent, {
+      data: {...product, new: false},
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        this.getProducts();
+      }
+    });
+  }
 
 }

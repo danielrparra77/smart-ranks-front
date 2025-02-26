@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
     declarations: [],
@@ -22,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
         MatTableModule,
         MatStepperModule,
         MatIconModule,
+        MatSelectModule,
     ],
     exports: [
         CommonModule,
@@ -34,6 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
         MatTableModule,
         MatStepperModule,
         MatIconModule,
+        MatSelectModule,
     ]
   })
   export class CommonFrontModule { }

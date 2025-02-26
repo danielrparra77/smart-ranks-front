@@ -1,0 +1,5 @@
+<mat-chip-set>
+    <mat-chip *ngFor="let item of invoices; index as i;" cdkDrag (click)="openInvoiceDetail(item)">
+       detail of **{{item.substr(item.length - 5)}}
+    </mat-chip>
+</mat-chip-set>

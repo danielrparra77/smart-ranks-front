@@ -24,6 +24,13 @@ export class UserService extends IService {
     );
   }
 
+  getUserbyId(_id: string): Observable<IUser> {
+    return this.http.get<IUser>(this.backService+ 'user/singular', {params: {_id}}).pipe(
+      tap(_ => this.log(`user found`)),
+      catchError(this.handleError<IUser>(`user`))
+    );
+  }
+
   getUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>(this.backService+ 'user').pipe(
       tap(_ => this.log(`users found`)),

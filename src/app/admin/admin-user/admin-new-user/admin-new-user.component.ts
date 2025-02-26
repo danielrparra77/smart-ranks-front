@@ -9,6 +9,7 @@ import {
 import { IUser, IUserUpsert } from '../../../interfaces/user.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../service/user/user.service';
+import { IDialog } from '../../../common/dialog.uc';
 
 @Component({
   selector: 'app-admin-new-user',
@@ -20,8 +21,7 @@ import { UserService } from '../../../service/user/user.service';
   templateUrl: './admin-new-user.component.html',
   styleUrl: './admin-new-user.component.css'
 })
-export class AdminNewUserComponent {
-  readonly dialogRef = inject(MatDialogRef<AdminNewUserComponent>);
+export class AdminNewUserComponent extends IDialog {
   readonly data = inject<IUserUpsert>(MAT_DIALOG_DATA);
   form: FormGroup = new FormGroup({
     name: new FormControl(this.data.name, [Validators.required]),
@@ -30,15 +30,13 @@ export class AdminNewUserComponent {
   error:string = '';
 
   constructor (private readonly userService: UserService) {
+    const dialogRef = inject(MatDialogRef<AdminNewUserComponent>);
+    super(dialogRef);
     if (this.data.new)
       this.form.addControl(
         'password',
         new FormControl('', [Validators.required]),
       );
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 
   submit(): void {

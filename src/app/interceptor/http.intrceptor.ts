@@ -1,9 +1,9 @@
 import { LocalStorageService } from '../service/local-storage/local-storage.service';
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent } from '@angular/common/http';
+import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpResponse } from '@angular/common/http';
 import { ICredentialsUC } from '../common/credentials.uc';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 @Injectable()
 export class IHttpInterceptor extends ICredentialsUC implements HttpInterceptor {
@@ -22,6 +22,12 @@ export class IHttpInterceptor extends ICredentialsUC implements HttpInterceptor 
         Authorization: `Bearer ${credentials.access_token}`
       }
     });
-    return handler.handle(req);
+    let self = this;
+    return handler.handle(req).pipe(
+      catchError(function (err) {
+        if (err.status == 401)
+          self.signOut();
+      return of(err);
+    }));
   }
 }

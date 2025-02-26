@@ -1,0 +1,40 @@
+<mat-dialog-content *ngIf="!loading">
+  <div *ngFor="let item of data.products; index as i;">
+    <mat-card class="product-card">
+        <mat-card-header>
+            <mat-card-title>{{item.product.name}}</mat-card-title>
+            <mat-card-subtitle>{{item.product.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>number: {{item.number}}</p>
+            <p>price: {{item.number * item.product.price}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-icon-button (click)="deleteProduct(i)" aria-label="Delete product">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+    </mat-card>
+    <mat-divider></mat-divider>
+  </div>
+  <p *ngIf="error" class="error">
+      {{ error }}
+  </p>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="loading">
+  <mat-grid-list cols="1" rowHeight="200px">
+    <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1"
+    >
+      <mat-progress-spinner
+        mode="indeterminate"
+      >
+      </mat-progress-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="submit()">Purchase Products</button>
+</mat-dialog-actions>

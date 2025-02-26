@@ -1,4 +1,5 @@
 
+<app-logout></app-logout>
 <mat-stepper #adminStepper>
     <mat-step label="Admin users">
       <app-admin-user></app-admin-user>
@@ -14,9 +15,10 @@
       </div>
     </mat-step>
     <mat-step label="Admin invoices">
+      <app-admin-invoice></app-admin-invoice>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="adminStepper.reset()">Reset</button>
+        <button mat-button (click)="adminStepper.reset()">Go First</button>
       </div>
     </mat-step>
   </mat-stepper>

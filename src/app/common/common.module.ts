@@ -9,6 +9,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
     declarations: [],
@@ -24,6 +30,12 @@ import { MatSelectModule } from '@angular/material/select';
         MatStepperModule,
         MatIconModule,
         MatSelectModule,
+        MatListModule,
+        MatDividerModule,
+        MatProgressSpinnerModule,
+        MatGridListModule,
+        MatChipsModule,
+        MatToolbarModule,
     ],
     exports: [
         CommonModule,
@@ -37,6 +49,12 @@ import { MatSelectModule } from '@angular/material/select';
         MatStepperModule,
         MatIconModule,
         MatSelectModule,
+        MatListModule,
+        MatDividerModule,
+        MatProgressSpinnerModule,
+        MatGridListModule,
+        MatChipsModule,
+        MatToolbarModule,
     ]
   })
   export class CommonFrontModule { }

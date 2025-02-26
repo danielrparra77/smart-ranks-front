@@ -1,0 +1,39 @@
+<button mat-raised-button (click)="openCart()">go to cart</button>
+<table mat-table [dataSource]="products">
+    <!-- Name column -->
+    <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+    <!-- Stock Column -->
+    <ng-container matColumnDef="stock">
+    <th mat-header-cell *matHeaderCellDef> Stock </th>
+    <td mat-cell *matCellDef="let element"> {{element.stock}} </td>
+    </ng-container>
+
+    <!-- add to cart -->
+    <ng-container matColumnDef="cart">
+    <th mat-header-cell *matHeaderCellDef> Add to cart </th>
+    <td mat-cell *matCellDef="let element"> 
+      <button mat-icon-button (click)="addToCart(element)" aria-label="Edit product">
+        <mat-icon>shopping_cart_checkout</mat-icon>
+      </button>
+    </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

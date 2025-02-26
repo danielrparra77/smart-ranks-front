@@ -26,8 +26,8 @@ export class AdminProductComponent {
 
   getProducts() {
     this.productService.getProducts()
-      .subscribe((users: IProduct[]) => {
-        this.products.data = users;
+      .subscribe((products: IProduct[]) => {
+        this.products.data = products;
         this.products.data = this.products.data;
         this.changeDetectorRefs.detectChanges();
     });

@@ -28,4 +28,9 @@ export abstract class ICredentialsUC {
       return;
     }
   }
+
+  signOut(): void {
+    this.localStorageService.remove(this.credentialsKey);
+    this.router.navigate(['login']);
+  }
 }

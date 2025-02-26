@@ -1,0 +1,22 @@
+<mat-dialog-content>
+    <mat-card class="product-card">
+        <mat-card-header>
+            <mat-card-title>Invoice number: {{invoice?.id}}</mat-card-title>
+            <mat-card-subtitle>Customer: {{userInvoice?.name}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div *ngFor="let item of productsInvoice;">
+                <p>Product: {{item.name}}</p>
+                <p>Product price: {{item.price}}</p>
+            </div>
+            <p>Data: {{invoice?.date}}</p>
+            <p>Total: {{invoice?.total}}</p>
+        </mat-card-content>
+    </mat-card>
+    <p *ngIf="error" class="error">
+        {{ error }}
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+  </mat-dialog-actions>

@@ -8,4 +8,5 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'user', component: UserComponent, canActivate: [AuthorizeGuard] },
     { path: 'admin', component: AdminComponent, canActivate: [AuthorizeGuard] },
+    { path: '**', component: LoginComponent },
 ];

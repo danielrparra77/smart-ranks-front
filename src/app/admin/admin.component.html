@@ -1,0 +1,21 @@
+
+<mat-stepper #adminStepper>
+    <mat-step label="Admin users">
+      <app-admin-user></app-admin-user>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Admin products">
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Admin invoices">
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="adminStepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>

@@ -5,13 +5,21 @@
     <form [formGroup]="form" (ngSubmit)="submit()">
     <p>
         <mat-form-field>
+        <mat-label>Email</mat-label>
         <input type="text" matInput placeholder="email" formControlName="email">
         </mat-form-field>
+        @if (formSubmited && form.get('email')?.errors) {
+          <mat-error>Invalid field</mat-error>
+        }
     </p>
 
     <p>
         <mat-form-field>
+        <mat-label>Password</mat-label>
         <input type="password" matInput placeholder="Password" formControlName="password">
+        @if (formSubmited && form.get('password')?.errors) {
+          <mat-error>Invalid field</mat-error>
+        }
         </mat-form-field>
     </p>
 

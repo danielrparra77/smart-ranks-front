@@ -2,30 +2,50 @@
   <mat-dialog-content>
     <p>
       <mat-form-field>
+        <mat-label>Name</mat-label>
         <input type="text" matInput placeholder="Name" formControlName="name">
+        @if (formSubmited && form.get('name')?.errors) {
+          <mat-error>Invalid field</mat-error>
+        }
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
+        <mat-label>Description</mat-label>
         <input type="text" matInput placeholder="Description" formControlName="description">
+        @if (formSubmited && form.get('description')?.errors) {
+          <mat-error>Invalid field</mat-error>
+        }
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
+        <mat-label>Price</mat-label>
         <input type="number" matInput placeholder="Price" formControlName="price">
+        @if (formSubmited && form.get('price')?.errors) {
+          <mat-error>Invalid field</mat-error>
+        }
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
+        <mat-label>Stock</mat-label>
         <input type="number" matInput placeholder="Stock" formControlName="stock">
+        @if (formSubmited && form.get('stock')?.errors) {
+          <mat-error>Invalid field</mat-error>
+        }
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
+        <mat-label>Status</mat-label>
         <mat-select placeholder="Status" formControlName="status">
           <mat-option value="{{statusActive}}">Active</mat-option>
           <mat-option value="{{statusInactive}}">Inactive</mat-option>
         </mat-select>
+        @if (formSubmited && form.get('status')?.errors) {
+          <mat-error>Invalid field</mat-error>
+        }
       </mat-form-field>
     </p>
     <p *ngIf="error" class="error">

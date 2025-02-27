@@ -23,8 +23,13 @@ import { IDialog } from '../../../common/dialog.uc';
 export class NewUserProductCartComponent extends IDialog {
   readonly data = inject<IProductToCart>(MAT_DIALOG_DATA);
   form: FormGroup = new FormGroup({
-    number: new FormControl(this.data.number, [Validators.required, Validators.max(this.data.product.stock)]),
+    number: new FormControl(this.data.number, [
+      Validators.required,
+      Validators.min(1),
+      Validators.max(this.data.product.stock),
+    ]),
   });
+  formSubmited: boolean = false;
 
   constructor(){
     const dialogRef = inject(MatDialogRef<NewUserProductCartComponent>);
@@ -32,6 +37,7 @@ export class NewUserProductCartComponent extends IDialog {
   }
   
   submit(): void {
+    this.formSubmited = true;
     if (!this.form.valid) return;
     this.dialogRef.close(this.form.getRawValue());
   }

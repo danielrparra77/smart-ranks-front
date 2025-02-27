@@ -35,6 +35,7 @@ export class AdminNewProductComponent extends IDialog {
     id: new FormControl(this.data.id, []),
   });
   error:string = '';
+  formSubmited: boolean = false;
 
   constructor (private readonly productService: ProductService,) {
     const dialogRef = inject(MatDialogRef<AdminNewProductComponent>);
@@ -42,6 +43,7 @@ export class AdminNewProductComponent extends IDialog {
   }
 
   submit(): void {
+    this.formSubmited = true;
     if (!this.form.valid) return;
     this.productService.upsertProduct(this.form.getRawValue())
       .subscribe((product: IProduct) => {

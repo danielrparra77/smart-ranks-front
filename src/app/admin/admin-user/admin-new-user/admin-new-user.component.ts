@@ -28,6 +28,7 @@ export class AdminNewUserComponent extends IDialog {
     email: new FormControl(this.data.email, [Validators.required, Validators.email]),
   });
   error:string = '';
+  formSubmited: boolean = false;
 
   constructor (private readonly userService: UserService) {
     const dialogRef = inject(MatDialogRef<AdminNewUserComponent>);
@@ -40,6 +41,7 @@ export class AdminNewUserComponent extends IDialog {
   }
 
   submit(): void {
+    this.formSubmited = true;
     if (!this.form.valid) return;
     this.userService.upsertUser(this.form.getRawValue())
       .subscribe((user: IUser) => {

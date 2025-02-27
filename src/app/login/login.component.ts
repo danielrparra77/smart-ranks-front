@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent extends ICredentialsUC {
   error: string = '';
+  formSubmited: boolean = false;
 
   form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -30,6 +31,7 @@ export class LoginComponent extends ICredentialsUC {
   }
 
   submit() {
+    this.formSubmited = true;
     if (!this.form.valid) return;
     this.userService.signIn({
       email: this.form.get('email')?.value,

@@ -2,7 +2,11 @@
     <mat-dialog-content>
       <p>
         <mat-form-field>
+          <mat-label>Number of {{data.product.name}}</mat-label>
           <input type="number" matInput placeholder="Number of {{data.product.name}}" formControlName="number" max="{{data.product.stock}}">
+          @if (formSubmited && form.get('number')?.errors) {
+            <mat-error>Invalid field</mat-error>
+          }
         </mat-form-field>
       </p>
     </mat-dialog-content>

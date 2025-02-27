@@ -2,17 +2,29 @@
   <mat-dialog-content>
     <p>
       <mat-form-field>
+        <mat-label>Name</mat-label>
         <input type="text" matInput placeholder="Name" formControlName="name">
+        @if (formSubmited && form.get('name')?.errors) {
+          <mat-error>Invalid field</mat-error>
+        }
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
+        <mat-label>Email</mat-label>
         <input type="email" matInput placeholder="Email" formControlName="email">
+        @if (formSubmited && form.get('email')?.errors) {
+          <mat-error>Invalid field</mat-error>
+        }
       </mat-form-field>
     </p>
     <p *ngIf="data.new">
       <mat-form-field>
+        <mat-label>Password</mat-label>
         <input type="password" matInput placeholder="Password" formControlName="password">
+        @if (formSubmited && form.get('password')?.errors) {
+          <mat-error>Invalid field</mat-error>
+        }
       </mat-form-field>
     </p>
     <p *ngIf="error" class="error">

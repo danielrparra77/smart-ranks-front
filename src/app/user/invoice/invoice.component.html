@@ -5,9 +5,11 @@
             <mat-card-subtitle>Customer: {{userInvoice?.name}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <div *ngFor="let item of productsInvoice;">
-                <p>Product: {{item.name}}</p>
-                <p>Product price: {{item.price}}</p>
+            <div class="invoice-product">
+                <div *ngFor="let item of productsInvoice;">
+                    <p>Product: {{item.name}}</p>
+                    <p>Product price: {{item.price}}</p>
+                </div>
             </div>
             <p>Data: {{invoice?.date}}</p>
             <p>Total: {{invoice?.total}}</p>

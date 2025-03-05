@@ -1,9 +1,16 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form [formGroup]="form" (ngSubmit)="submit()" data-testid="form">
     <mat-dialog-content>
       <p>
         <mat-form-field>
           <mat-label>Number of {{data.product.name}}</mat-label>
-          <input type="number" matInput placeholder="Number of {{data.product.name}}" formControlName="number" max="{{data.product.stock}}">
+          <input
+            type="number"
+            matInput
+            placeholder="Number of {{data.product.name}}"
+            formControlName="number"
+            max="{{data.product.stock}}"
+            data-testid="number"
+          >
           @if (formSubmited && form.get('number')?.errors) {
             <mat-error>Invalid field</mat-error>
           }
@@ -11,7 +18,11 @@
       </p>
     </mat-dialog-content>
     <mat-dialog-actions>
-      <button mat-button (click)="onNoClick()">No Thanks</button>
-      <button type="submit" mat-button>Ok</button>
+      <button mat-button (click)="onNoClick()" data-testid="no-click">No Thanks</button>
+      <button
+        type="submit"
+        mat-button
+        data-testid="submit"
+      >Ok</button>
     </mat-dialog-actions>
   </form>

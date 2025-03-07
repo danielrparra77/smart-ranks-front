@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonFrontModule } from '../../common/common.module';
 import { ProductService } from '../../service/product/product.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,13 +16,15 @@ import { InvoiceComponent } from '../invoice/invoice.component';
   templateUrl: './user-product.component.html',
   styleUrl: './user-product.component.css'
 })
-export class UserProductComponent {
+export class UserProductComponent implements OnInit {
   constructor(
     private readonly productService: ProductService,
     private changeDetectorRefs: ChangeDetectorRef,
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.getProducts();
-  }
+  } 
 
   readonly dialog = inject(MatDialog);
   cart: ICart = {products : []};

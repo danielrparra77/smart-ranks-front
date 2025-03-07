@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { LogoutComponent } from './logout.component';
+import { By } from '@angular/platform-browser';
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -20,4 +20,14 @@ describe('LogoutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should logout', fakeAsync(async ()=> {
+    const spySignOut = spyOn(component, 'signOut');
+    fixture.detectChanges();
+    let buttondebug = fixture.debugElement.query(By.css('button'));
+    let button = buttondebug.nativeElement;
+    button.click();
+    fixture.detectChanges();
+    expect(spySignOut).toHaveBeenCalledTimes(1);
+  }));
 });

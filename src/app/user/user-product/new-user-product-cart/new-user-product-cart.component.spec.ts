@@ -4,7 +4,7 @@ import { NewUserProductCartComponent } from './new-user-product-cart.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { mockProductToCart } from '../../../../../test/mocks/cart.mock';
-import { findEl, setFieldValue } from '../../../../../test/mocks/spec-helpers/element.spec-helper';
+import { findEl, setFieldValue } from '../../../../../test/spec-helpers/element.spec-helper';
 
 describe('NewUserProductCartComponent', () => {
   let component: NewUserProductCartComponent;
